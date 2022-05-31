@@ -3,6 +3,7 @@ import { ComponentConfig } from "./models/config";
 import LayoutService from './services/layout-provider'
 import {DummyComponent} from './../components/dummy-component/dummy-component'
 import { ClockComponent } from "../components/clock/clock";
+import { Button, Card } from "react-bootstrap";
 
 const screenSize = {
     width: 12,
@@ -56,8 +57,20 @@ export const DashboardCore = () => {
                         width: getComponentWidth(item.config, width),
                         top: getComponentOffsetY(item.config, height),
                         left: getComponentOffsetX(item.config, width),
+                        maxHeight: getComponentHeight(item.config, height),
+                        maxWidth: getComponentWidth(item.config, width),
                     }} >
-                    {React.createElement(components.find(c => c.name === item.id)!.component, {config: item.config})}
+                        <Card style={{
+                            height: getComponentHeight(item.config, height),
+                            width: getComponentWidth(item.config, width),
+                        }}>
+                            <Card.Body>
+                                <Card.Text>
+                                {React.createElement(components.find(c => c.name === item.id)!.component, {config: item.config})}
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    
                 </div>
             ))}
         </div>
