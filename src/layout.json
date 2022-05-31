@@ -1,0 +1,25 @@
+{
+    "components": [
+        {
+            "id": "clockComponent",
+            "xPosition": 0,
+            "yPosition": 0,
+            "width": 1,
+            "height": 1
+        },
+        {
+            "id": "dummyComponent",
+            "xPosition": 11,
+            "yPosition": 5,
+            "width": 1,
+            "height": 1
+        },
+        {
+            "id": "dummyComponent",
+            "xPosition": 0,
+            "yPosition": 2,
+            "width": 12,
+            "height": 2
+        }
+    ]
+}
