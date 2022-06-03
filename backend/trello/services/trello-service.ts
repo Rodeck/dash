@@ -11,13 +11,14 @@ console.log(process.env.RABBIT_URL);
 
 export const getItemsInBoard = async (boardId: string): Promise<OutputList[]> => {
   const url = `https://api.trello.com/1/boards/${boardId}/cards?`;
+  const skipLists = ['Kupione', 'Odrzucone'];
   const authorizedUrl = authorizeUrl(url);
 
   const result = await axios.get<ListItem[]>(authorizedUrl);
 
   if (result.status === 200) {
     const items = result.data;
-    const lists = await getLists(boardId);
+    const lists = await (await getLists(boardId)).filter(list => !skipLists.includes(list.name));
 
     return lists.map((list) => {
       const listItems = items.filter((item) => item.idList === list.id).map((item) => {
