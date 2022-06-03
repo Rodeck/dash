@@ -8,18 +8,18 @@
             "height": 1
         },
         {
-            "id": "dummyComponent",
-            "xPosition": 11,
-            "yPosition": 5,
-            "width": 1,
+            "id": "eventsComponent",
+            "xPosition": 2,
+            "yPosition": 0,
+            "width": 3,
             "height": 1
         },
         {
-            "id": "dummyComponent",
+            "id": "trelloComponent",
             "xPosition": 0,
             "yPosition": 2,
-            "width": 12,
-            "height": 2
+            "width": 6,
+            "height": 4
         }
     ]
 }

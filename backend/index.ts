@@ -9,7 +9,7 @@ import errorMiddleware from './middlewares/errorMiddleware';
 const logger = winston.createLogger({
   level: 'info',
   format: winston.format.json(),
-  defaultMeta: {service: 'gyms'},
+  defaultMeta: {service: 'dash-backend'},
   transports: [
     //
     // - Write all logs with importance level of `error` or less to `error.log`

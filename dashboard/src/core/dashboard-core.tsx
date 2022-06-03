@@ -4,6 +4,8 @@ import LayoutService from './services/layout-provider'
 import {DummyComponent} from './../components/dummy-component/dummy-component'
 import { ClockComponent } from "../components/clock/clock";
 import { Button, Card } from "react-bootstrap";
+import { EventsComponent } from "../components/events/events-component";
+import { TrelloComponent } from "../components/trello/trello-component";
 
 const screenSize = {
     width: 12,
@@ -42,6 +44,14 @@ const components = [
     {
         name: "clockComponent",
         component: ClockComponent
+    },
+    {
+        name: "eventsComponent",
+        component: EventsComponent
+    },
+    {
+        name: "trelloComponent",
+        component: TrelloComponent
     },
 ];
 
