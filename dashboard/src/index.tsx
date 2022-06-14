@@ -5,8 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+const appendScript = (scriptToAppend: string) => {
+  const script = document.createElement("script");
+  script.src = scriptToAppend;
+  script.async = true;
+  document.body.appendChild(script);
+}
+
+appendScript('env-config.js');
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
+  
 );
 root.render(
   <React.StrictMode>

@@ -1,24 +1,17 @@
 services:
   backend:
     restart: on-failure:10
-    build:
-      context: ./backend
-      dockerfile: ./dockerfile
+    build: ./backend/
     environment:
       - NODE_ENV=docker
       - TRELLO_APIKEY=${TRELLO_APIKEY}
       - TRELLO_TOKEN=${TRELLO_TOKEN}
-    networks:
-      - internal
+    ports:
+      - 3001:80
   frontend:
     restart: on-failure:10
-    build:
-      context: ./dashboard
-      dockerfile: ./dockerfile
+    build: ./dashboard/
     ports:
       - 8080:80
     environment:
-      - REACT_APP_TRELLO_URL=http://backend
-
-networks:
-  internal:
+      - REACT_APP_TRELLO_URL=http://host.docker.internal:3001
