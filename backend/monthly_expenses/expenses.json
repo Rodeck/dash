@@ -1,0 +1,33 @@
+[
+    {
+        "month": "default",
+        "year": "2022",
+        "expenses": [
+            {
+                "name": "Czynsz",
+                "amount": 750,
+                "day": 25
+            },
+            {
+                "name": "Kredyt",
+                "amount": 3200,
+                "day": 20
+            },
+            {
+                "name": "Ubezpieczenie",
+                "amount": 150,
+                "day": 20
+            },
+            {
+                "name": "Orange",
+                "amount": 99.99,
+                "day": 18
+            },
+            {
+                "name": "Prąd",
+                "amount": 91.01,
+                "day": 24
+            }
+        ]
+    }
+]

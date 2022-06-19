@@ -4,24 +4,13 @@ import { ListGroupItem, Table } from 'react-bootstrap';
 import TrelloService from './trello-service';
 import { List } from './models/list';
 
-export interface Event {
-    name: string;
-    date: Date;
-}
-
-export interface Calendar {
-  closeEvents: Event[];
-  allEvents: Event[];
-  allEventsCount: number;
-}
-
 export const TrelloComponent = () => {
     const [lists, setLists] = useState(new Array<List>());
 
     useEffect(() => {
       let secTimer = setInterval( async () => {
         await fetchData();
-      },1000)
+      },10000)
   
       return () => clearInterval(secTimer);
     }, []);

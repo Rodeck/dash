@@ -2,7 +2,8 @@
 import 'dotenv/config';
 import cors from 'cors';
 import express from 'express';
-import router from './trello/index';
+import trelloRouter from './trello/index';
+import expensesRouter from './monthly_expenses/index';
 import winston from 'winston';
 import errorMiddleware from './middlewares/errorMiddleware';
 
@@ -28,12 +29,13 @@ if (process.env.NODE_ENV !== 'production') {
 
 const app = express();
 
-const environment = process.env.NODE_ENV ?? 'local';
-const port = environment === 'local' ? 3002 : 80;
+const environment = process.env.NODE_ENV ?? 'development';
+const port = environment === 'development' ? 3001 : 80;
 
 app.use(cors());
 app.set('port', port);
-app.use('/', router);
+app.use('/trello', trelloRouter);
+app.use('/expenses', expensesRouter);
 
 app.use(express.json());
 

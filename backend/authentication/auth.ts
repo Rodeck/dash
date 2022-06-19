@@ -1,5 +1,5 @@
 import {Response, NextFunction} from 'express';
-import {UserRequest} from '../trello/models/user-request';
+import { UserRequest } from './../authentication/user-request';
 
 export function authorize(req : UserRequest, res: Response, next: NextFunction) {
   if (req.user) {

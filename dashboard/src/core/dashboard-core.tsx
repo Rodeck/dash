@@ -6,6 +6,7 @@ import { ClockComponent } from "../components/clock/clock";
 import { Button, Card } from "react-bootstrap";
 import { EventsComponent } from "../components/events/events-component";
 import { TrelloComponent } from "../components/trello/trello-component";
+import { ExpensesComponent } from "../components/expenses/expenses-component";
 
 const screenSize = {
     width: 12,
@@ -52,6 +53,10 @@ const components = [
     {
         name: "trelloComponent",
         component: TrelloComponent
+    },
+    {
+        name: "expensesComponent",
+        component: ExpensesComponent
     },
 ];
 

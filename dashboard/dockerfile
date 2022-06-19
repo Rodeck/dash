@@ -1,9 +1,13 @@
 FROM node:16 AS ui-build
+ARG REACT_APP_TRELLO_URL
+ARG REACT_APP_API_URL
 WORKDIR /usr/src
 COPY . ./app/
 RUN cd app && npm install && npm run build
 
 FROM nginx:alpine
+ARG REACT_APP_TRELLO_URL
+ARG REACT_APP_API_URL
 # Set working directory to nginx asset directory
 WORKDIR /usr/share/nginx/html
 # Remove default nginx static assets
