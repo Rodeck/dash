@@ -1,7 +1,5 @@
-
 import express from 'express';
-import authMiddleware from '../middlewares/authMiddleware';
-import {authorize, getUserId} from '../authentication/auth';
+import {getUserId} from '../authentication/auth';
 import * as bodyParser from 'body-parser';
 import {getItemsInBoard} from './services/trello-service';
 

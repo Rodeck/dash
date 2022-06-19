@@ -1,4 +1,4 @@
-import {UserRequest} from '../trello/models/user-request';
+import { UserRequest } from './../authentication/user-request';
 import admin from './../authentication/';
 import {Response, NextFunction} from 'express';
 import {createLogger} from '../logger';
