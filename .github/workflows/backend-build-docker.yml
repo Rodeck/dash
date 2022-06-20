@@ -37,5 +37,5 @@ jobs:
         with:
           push: true
           context: "{{defaultContext}}:backend"
-          tags: redroddeck/dash:latest
-          platform: linux/amd64,linux/arm64,linux/arm/v7
+          tags: redroddeck/dash-backend:latest
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
