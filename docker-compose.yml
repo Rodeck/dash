@@ -8,6 +8,15 @@ services:
       - TRELLO_TOKEN=${TRELLO_TOKEN}
     ports:
       - 3001:80
+  admin-backend:
+    restart: on-failure:10
+    image: redroddeck/dash-backend
+    environment:
+      - NODE_ENV=docker
+      - TRELLO_APIKEY=${TRELLO_APIKEY}
+      - TRELLO_TOKEN=${TRELLO_TOKEN}
+    ports:
+      - 3001:80
   frontend:
     restart: on-failure:10
     image: redroddeck/dash
@@ -15,3 +24,28 @@ services:
       - 8080:80
     environment:
       - REACT_APP_TRELLO_URL=http://localhost:3001
+  db:
+    image: 'mongo'
+    container_name: 'dashboard-mongo'
+    ports:
+     - 27017:27017
+    environment:
+      - MONGO_INITDB_DATABASE=dashboard
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=3)R79ZP,:cv}r_5(
+    volumes:
+      - mongo-volume:/data/db
+  gateway:
+    image: nginx
+    restart: on-failure:10
+    ports:
+      - "443:443"
+      - "80:80"
+    volumes:
+      - type: bind
+        source: ./nginx/default.conf
+        target: /etc/nginx/nginx.conf
+
+volumes:
+  mongo-volume:
+

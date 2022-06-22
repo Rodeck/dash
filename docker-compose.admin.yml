@@ -1,13 +1,4 @@
 services:
-  backend:
-    restart: on-failure:10
-    build: ./backend/
-    environment:
-      - NODE_ENV=docker
-      - TRELLO_APIKEY=${TRELLO_APIKEY}
-      - TRELLO_TOKEN=${TRELLO_TOKEN}
-    ports:
-      - 3001:80
   admin-backend:
     restart: on-failure:10
     build: ./admin-backend/
@@ -18,13 +9,12 @@ services:
       - DB_PASSWORD=3)R79ZP,:cv}r_5(
     ports:
       - 3002:80
-  frontend:
+  admin-panel:
     restart: on-failure:10
-    build: ./dashboard/
+    build: ./admin-panel/
     ports:
       - 8080:80
     environment:
-      - REACT_APP_TRELLO_URL=http://localhost:3001/trello
       - REACT_APP_API_URL=http://localhost:3001
   db:
     image: 'mongo'

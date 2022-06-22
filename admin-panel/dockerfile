@@ -1,0 +1,22 @@
+FROM node:16 AS ui-build
+ARG REACT_APP_API_URL
+WORKDIR /usr/src
+COPY . ./app/
+RUN cd app && npm install && npm run build
+
+FROM nginx:alpine
+ARG REACT_APP_API_URL
+# Set working directory to nginx asset directory
+WORKDIR /usr/share/nginx/html
+# Remove default nginx static assets
+RUN rm -rf ./*
+# Copy static assets from builder stage
+COPY --from=ui-build /usr/src/app/build/ .
+COPY --from=ui-build /usr/src/app/env.sh .
+COPY --from=ui-build /usr/src/app/.env .
+
+# Containers run nginx with global directives and daemon off
+RUN chmod +x env.sh
+RUN apk add --no-cache bash
+#ENTRYPOINT ["nginx", "-g", "daemon off;"]
+CMD ["/bin/bash", "-c", "/usr/share/nginx/html/env.sh && nginx -g \"daemon off;\""]
