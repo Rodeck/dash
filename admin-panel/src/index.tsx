@@ -5,10 +5,22 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
+
+const appendScript = (scriptToAppend: string) => {
+  const script = document.createElement("script");
+  script.src = scriptToAppend;
+  script.async = true;
+  document.body.appendChild(script);
+}
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+console.log('1');
+appendScript('env-config.js');
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
