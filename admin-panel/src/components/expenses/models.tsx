@@ -8,5 +8,5 @@ export interface Expense {
     day: number,
     amount: number,
     name: string,
-    overdue: number,
+    _id: string,
 }

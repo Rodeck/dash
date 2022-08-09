@@ -1,5 +1,5 @@
 import { ObjectId } from 'mongodb';
-import { Schema, model, connect, ConnectOptions } from 'mongoose';
+import { Schema, model, connect, ConnectOptions, FilterQuery, UpdateQuery } from 'mongoose';
 
 const configuration = {
     url: process.env.DB_URL,
@@ -29,4 +29,10 @@ export const getItems = async <TItem>(schema: Schema<TItem>, name: string): Prom
     const Model = model<TItem>(name, schema);
 
     return await Model.find({}).exec();
+};
+
+export const updateItem = async <TItem>(schema: Schema<TItem>, name: string, filter: FilterQuery<TItem>, update: UpdateQuery<TItem>) => {
+    const Model = model<TItem>(name, schema);
+
+    return Model.updateMany(filter, update, { upsert: true });
 };

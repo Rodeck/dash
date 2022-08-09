@@ -1,7 +1,7 @@
 import express from 'express';
 import * as bodyParser from 'body-parser';
 import {getActiveExpense, createExpenses} from './services/expenses-service';
-import { Month } from './models/month';
+import { Expense, Month } from './models/month';
 
 // eslint-disable-next-line new-cap
 const router = express.Router();
@@ -27,7 +27,12 @@ router.post('/', jsonParser, async (req, res) => {
       isActive: true,
       month: req.body.month,
       year: req.body.year,
-      expenses: req.body.expenses
+      expenses: req.body.expenses.map((e: Expense) => ({
+        day: e.day,
+        amount: e.amount,
+        name: e.name,
+      })),
+      createdDate: new Date(),
     }
     const id = await createExpenses(month);
     res.send(id);
